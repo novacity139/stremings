@@ -1,0 +1,138 @@
+"use client";
+
+import { useState } from "react";
+
+export default function CreatorsNovaCity() {
+  const [streamers] = useState([
+    {
+      id: 1,
+      nome: "Creator Alpha",
+      avatar: "https://via.placeholder.com/150",
+      online: true,
+    },
+    {
+      id: 2,
+      nome: "Creator Beta",
+      avatar: "https://via.placeholder.com/150",
+      online: false,
+    },
+    {
+      id: 3,
+      nome: "Creator Gamma",
+      avatar: "https://via.placeholder.com/150",
+      online: true,
+    },
+  ]);
+
+  return (
+    <main className="min-h-screen bg-black text-white">
+      <nav className="border-b border-blue-600 bg-zinc-950">
+        <div className="max-w-7xl mx-auto flex justify-between items-center p-5">
+          <h1 className="text-2xl font-bold text-blue-500">
+            Creators Nova City
+          </h1>
+
+          <div className="flex gap-6">
+            <button>Home</button>
+            <button>Ao Vivo</button>
+            <button>Admin</button>
+          </div>
+        </div>
+      </nav>
+
+      <section className="text-center py-20">
+        <h2 className="text-6xl font-bold">
+          Creators
+          <span className="text-blue-500"> Nova City</span>
+        </h2>
+
+        <p className="text-zinc-400 mt-4">
+          Plataforma Oficial de Streamers da Nova City
+        </p>
+
+        <button className="mt-8 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg">
+          Entrar com Google
+        </button>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-5 pb-20">
+        <h3 className="text-3xl font-bold text-blue-500 mb-8">
+          Streamers Ao Vivo
+        </h3>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {streamers.map((streamer) => (
+            <div
+              key={streamer.id}
+              className="bg-zinc-900 border border-blue-700 rounded-xl overflow-hidden"
+            >
+              <img
+                src={streamer.avatar}
+                alt={streamer.nome}
+                className="w-full h-64 object-cover"
+              />
+
+              <div className="p-4">
+                <div className="flex justify-between items-center">
+                  <h4 className="font-bold text-xl">
+                    {streamer.nome}
+                  </h4>
+
+                  {streamer.online ? (
+                    <span className="bg-red-600 px-3 py-1 rounded-full text-xs">
+                      AO VIVO
+                    </span>
+                  ) : (
+                    <span className="bg-zinc-700 px-3 py-1 rounded-full text-xs">
+                      OFFLINE
+                    </span>
+                  )}
+                </div>
+
+                <button className="mt-4 w-full bg-blue-600 hover:bg-blue-700 py-2 rounded-lg">
+                  Assistir
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-5 pb-20">
+        <div className="bg-zinc-900 border border-blue-700 rounded-xl p-6">
+          <h3 className="text-2xl font-bold text-blue-500 mb-6">
+            Painel Administrativo
+          </h3>
+
+          <form className="grid gap-4">
+            <input
+              className="bg-zinc-800 p-3 rounded-lg"
+              placeholder="Nome do Streamer"
+            />
+
+            <input
+              className="bg-zinc-800 p-3 rounded-lg"
+              placeholder="URL do Avatar"
+            />
+
+            <input
+              className="bg-zinc-800 p-3 rounded-lg"
+              placeholder="Link da Twitch"
+            />
+
+            <button
+              type="submit"
+              className="bg-blue-600 hover:bg-blue-700 p-3 rounded-lg"
+            >
+              Salvar Streamer
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <footer className="border-t border-blue-700 py-6 text-center text-zinc-500">
+        © 2026 Creators Nova City
+      </footer>
+    </main>
+  );
+}
